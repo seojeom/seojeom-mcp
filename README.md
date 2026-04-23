@@ -2,6 +2,9 @@
 
 Local-first MCP server for Claude and Codex project wiki and graph workflows.
 
+> Preview status
+> This package is published and installable today, but it is still a preview release rather than a stable general-availability product. Tool behavior, playbooks, packaging, and release automation may change between versions while the standalone MCP workflow is being stabilized.
+
 ## Install
 
 ### Claude Desktop
