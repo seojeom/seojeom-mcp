@@ -1,0 +1,31 @@
+{
+  "name": "@seojeom/mcp-server",
+  "version": "0.2.3",
+  "description": "Seojeom MCP server for local project wiki and graph workflows",
+  "transports": [
+    "stdio",
+    "streamable-http"
+  ],
+  "entrypoints": {
+    "stdio": "bin/seojeom-mcp",
+    "http": "dist/index.js"
+  },
+  "notes": [
+    "Standalone stdio mode defaults wiki tools to local filesystem authority under the selected project root.",
+    "Standalone graph read tools can opt into local snapshot authority, and graph propose/list/decision tools can use a local proposal queue.",
+    "Standalone graph context bundling can assemble prompt-ready local graph facts around a focus node from the local snapshot.",
+    "Standalone graph gap analysis can inspect local snapshot structure without upstream API calls or embedded LLM workflows.",
+    "Standalone graph workflow preparation can combine local context, local gaps, and preferred next-tool recommendations for Claude/Codex.",
+    "Standalone graph workflow preparation can also surface related local wiki pages and recommend seojeom_write_wiki when graph entities are undocumented.",
+    "Standalone graph research preparation can choose between local wiki reuse, local wiki creation, and external search query prep without running provider-bound web search.",
+    "Standalone graph runbook preparation can turn local review, local documentation, external research prep, and graph edits into one ordered tool-by-tool session plan.",
+    "Standalone graph session preparation can emit a Claude-ready local-first prompt contract with grounding rules, operator brief, and ordered tool calls.",
+    "Standalone focused graph sessions can reduce that contract to wiki documentation, packet repair, or relation fill-in steps for lower-turn Claude workflows.",
+    "Standalone graph playbooks can wrap focused sessions into named presets with phased steps, approval checkpoints, and handoff prompts for Claude operators.",
+    "Standalone graph playbook catalog can tell Claude which preset to choose first and emit a starter prompt before any graph editing call.",
+    "Standalone Claude onboarding helper can emit the exact claude mcp add command and the first MCP calls to make after install.",
+    "Standalone local graph apply supports the create_node and create_edge proposal kinds against the local canonical snapshot.",
+    "Standalone local graph scene tools operate on .seojeom/graph/scenes.json when graphAuthority=local-snapshot.",
+    "Standalone direct graph mutation supports local node/edge create-update-delete, local packet create-update, and patch_node_timeline against the local canonical snapshot."
+  ]
+}

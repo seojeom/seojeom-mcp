@@ -1,0 +1,73 @@
+{
+  "name": "@seojeom/mcp-server",
+  "version": "0.2.3",
+  "private": false,
+  "type": "module",
+  "description": "Local-first MCP server for Claude/Codex project wiki and graph workflows",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seojeom/seojeom-mcp.git"
+  },
+  "homepage": "https://github.com/seojeom/seojeom-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/seojeom/seojeom-mcp/issues"
+  },
+  "license": "MIT",
+  "author": "seojeom",
+  "mcpName": "io.github.seojeom/seojeom-mcp",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "codex",
+    "wiki",
+    "graph",
+    "local-first",
+    "authoring",
+    "novel-writing",
+    "creative-writing",
+    "continuity-tracking",
+    "worldbuilding",
+    "writer-tool",
+    "knowledge-graph",
+    "korean-webnovel"
+  ],
+  "bin": {
+    "seojeom-mcp": "./bin/seojeom-mcp"
+  },
+  "main": "./dist/standalone.js",
+  "exports": {
+    ".": "./dist/standalone.js",
+    "./standalone": "./dist/standalone.js",
+    "./http": "./dist/index.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "server.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.package.json",
+    "start": "node dist/standalone.js",
+    "start:http": "node dist/index.js"
+  },
+  "engines": {
+    "node": ">=20.20.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "express": "^5.2.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "manifest_version": "0.3",
+  "name": "seojeom-mcp",
+  "display_name": "Seojeom",
+  "version": "0.2.3",
+  "description": "Local-first MCP for project wiki and graph workflows. Stores everything under your project directory, not a remote SaaS.",
+  "long_description": "Seojeom is a local-first MCP server for Claude and Codex. It connects the assistant to a project-local wiki under <project-root>/wiki and a local graph snapshot under <project-root>/.seojeom/graph/, with deterministic workflows, runbooks, and playbooks for novel writing and worldbuilding. All mutations pass through an approval queue; no remote service is required.",
+  "author": {
+    "name": "seojeom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seojeom/seojeom-mcp"
+  },
+  "homepage": "https://github.com/seojeom/seojeom-mcp#readme",
+  "documentation": "https://github.com/seojeom/seojeom-mcp#readme",
+  "support": "https://github.com/seojeom/seojeom-mcp/issues",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "claude",
+    "wiki",
+    "graph",
+    "local-first",
+    "novel-writing",
+    "creative-writing",
+    "worldbuilding",
+    "knowledge-graph",
+    "korean-webnovel"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/standalone.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/standalone.js",
+        "--project-root",
+        "${user_config.project_root}",
+        "--project-id",
+        "${user_config.project_id}",
+        "--graph-authority",
+        "local-snapshot",
+        "--approval-mode",
+        "prompt"
+      ]
+    }
+  },
+  "user_config": {
+    "project_root": {
+      "type": "directory",
+      "title": "Project Root",
+      "description": "Your novel or worldbuilding project directory. The server will read and write wiki/ and .seojeom/ under this path.",
+      "required": true
+    },
+    "project_id": {
+      "type": "string",
+      "title": "Project ID",
+      "description": "Stable identifier for this project (used in file paths). Use a short slug, e.g. 'my-novel'.",
+      "required": true,
+      "default": "my-project"
+    }
+  },
+  "tools": [
+    {
+      "name": "seojeom_project_info",
+      "description": "Return the currently bound project metadata and server status."
+    },
+    {
+      "name": "seojeom_get_claude_mcp_onboarding",
+      "description": "Return the install command and recommended first tool calls for a Claude operator."
+    },
+    {
+      "name": "seojeom_list_graph_playbooks",
+      "description": "List available local graph playbook presets for Claude/Codex operators."
+    },
+    {
+      "name": "seojeom_prepare_graph_playbook",
+      "description": "Expand a named playbook into phased operator steps, approval checkpoints, and verification guidance."
+    },
+    {
+      "name": "seojeom_list_wiki_pages",
+      "description": "List wiki pages for the current project."
+    },
+    {
+      "name": "seojeom_read_wiki",
+      "description": "Read a single wiki page and optionally its section index."
+    },
+    {
+      "name": "seojeom_write_wiki",
+      "description": "Create or update a wiki page. All mutations pass through the approval queue."
+    },
+    {
+      "name": "seojeom_list_nodes",
+      "description": "List graph nodes with optional type, plane, and text filters."
+    },
+    {
+      "name": "seojeom_search_nodes",
+      "description": "Search graph nodes by text query, with optional type filters."
+    },
+    {
+      "name": "seojeom_get_node",
+      "description": "Load one node plus neighboring edges and aggregate detail."
+    },
+    {
+      "name": "seojeom_neighborhood",
+      "description": "Load a graph neighborhood around one focus ref with configurable depth."
+    },
+    {
+      "name": "seojeom_build_graph_context",
+      "description": "Build a prompt-ready local graph context bundle around an optional focus node."
+    },
+    {
+      "name": "seojeom_analyze_graph_gaps",
+      "description": "Analyze structural graph gaps without calling upstream APIs or LLM workflows."
+    },
+    {
+      "name": "seojeom_prepare_graph_workflow",
+      "description": "Combine local graph context, gap findings, and deterministic next-tool recommendations."
+    },
+    {
+      "name": "seojeom_prepare_graph_research",
+      "description": "Build a local-first research plan from graph context, wiki matches, and gap findings."
+    },
+    {
+      "name": "seojeom_prepare_graph_runbook",
+      "description": "Combine workflow and research into one ordered runbook for graph editing sessions."
+    },
+    {
+      "name": "seojeom_prepare_graph_session",
+      "description": "Turn the runbook into a Claude-ready session contract with grounding rules and ordered tool calls."
+    },
+    {
+      "name": "seojeom_prepare_graph_focused_session",
+      "description": "Prepare a focused session for wiki documentation, packet repair, or relation fill-in work."
+    },
+    {
+      "name": "seojeom_propose_node",
+      "description": "Persist a node_form proposal into the graph proposal queue."
+    },
+    {
+      "name": "seojeom_propose_edge",
+      "description": "Persist an edge_form proposal into the graph proposal queue."
+    },
+    {
+      "name": "seojeom_list_proposal_sets",
+      "description": "List persisted graph proposal sets for the current project."
+    },
+    {
+      "name": "seojeom_decide_proposal_set",
+      "description": "Mark a graph proposal set as approved, rejected, needs_revision, or superseded."
+    },
+    {
+      "name": "seojeom_apply_proposal_set",
+      "description": "Apply a persisted graph proposal set to the canonical graph."
+    },
+    {
+      "name": "seojeom_apply_graph_mutation",
+      "description": "Apply a direct canonical graph mutation for the current project."
+    },
+    {
+      "name": "seojeom_list_graph_scenes",
+      "description": "List locally persisted graph scene summaries."
+    },
+    {
+      "name": "seojeom_read_graph_scene",
+      "description": "Read a local graph scene by id, or the default scene when no id is provided."
+    },
+    {
+      "name": "seojeom_save_graph_scene",
+      "description": "Persist local graph scene objects, links, and viewport state."
+    },
+    {
+      "name": "seojeom_create_graph_scene",
+      "description": "Create a new local graph scene."
+    },
+    {
+      "name": "seojeom_get_default_graph_scene",
+      "description": "Read or create the default local graph scene."
+    },
+    {
+      "name": "seojeom_search_wiki_pages",
+      "description": "Search wiki pages by title, path, tags, or section text."
+    }
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20.20.0"
+    }
+  }
+}
