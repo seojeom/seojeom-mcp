@@ -1,0 +1,56 @@
+{
+  "name": "seojeom-mcp",
+  "version": "0.3.20",
+  "type": "module",
+  "description": "Local-first MCP server for Claude/Codex project wiki and graph workflows",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seojeom/seojeom-mcp.git"
+  },
+  "homepage": "https://github.com/seojeom/seojeom-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/seojeom/seojeom-mcp/issues"
+  },
+  "license": "MIT",
+  "author": "seojeom",
+  "mcpName": "io.github.seojeom/seojeom-mcp",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "codex",
+    "wiki",
+    "graph",
+    "local-first",
+    "authoring",
+    "novel-writing",
+    "creative-writing",
+    "continuity-tracking",
+    "worldbuilding",
+    "writer-tool",
+    "knowledge-graph",
+    "korean-webnovel"
+  ],
+  "bin": {
+    "seojeom-mcp": "bin/seojeom-mcp"
+  },
+  "main": "./dist/standalone.js",
+  "exports": {
+    ".": "./dist/standalone.js",
+    "./standalone": "./dist/standalone.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.20.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "express": "^5.2.1",
+    "zod": "^4.3.6"
+  }
+}
